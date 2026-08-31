@@ -4,12 +4,11 @@ import random
 import copy
 
 class PerlinNoiseGenerator(WorldGenerator):
-    def __init__(self, worldWidth, worldHeight, worldBlocks: dict):
+    def __init__(self, worldWidth, worldHeight, worldBlocks):
         super().__init__(worldWidth, worldHeight)
         self.worldBlocks = worldBlocks
-        self.generatedWorld = []
         self.noise = PerlinNoise(octaves=4, seed=random.randint(0, 999999))
-    def perlinnoisegenerator(self):
+    def generation(self):
         scale = 20.0
 
         for wh in range(self.worldHeight):
@@ -24,7 +23,6 @@ class PerlinNoiseGenerator(WorldGenerator):
                 newblock.blockTransform.posY = ww * 32
                 row.append(newblock)
             self.generatedWorld.append(row)
-            
     def pickBlock(self, noiseValue):
         for block, threshold in self.worldBlocks:
             if noiseValue <= threshold:

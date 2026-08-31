@@ -23,8 +23,6 @@ class Logic():
         self.camera = camera
     def UIlist(self, ui: list[UI]):
         self.ui = ui
-    def worldlogic(self, world: WorldGenerator | GridGenerator | PerlinNoiseGenerator):
-        self.world = world
     def update(self, deltaTime):
         self.camera.update()
         for p in self.players:

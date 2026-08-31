@@ -21,21 +21,17 @@ class Visual:
                                  pyray.Vector2(cursor.mousePos.x, cursor.mousePos.y), 
                                  pyray.WHITE)
         def drawworld():
-                for row in logic.world.generatedWorld:
-                    for block in row:
-                        pyray.draw_texture_v(
-                            block.blockSprite.sprite,
-                            pyray.Vector2(block.blockTransform.posX, block.blockTransform.posY),
-                            pyray.WHITE
-                        )
-
+            pass
+        def initentities():
+            for p in logic.players:
+                pyray.draw_texture_v(p.entitySprite.sprite, pyray.Vector2(p.entityTransform.posX, p.entityTransform.posY), pyray.WHITE)
+            for m in logic.mobs:
+                pyray.draw_texture_v(m.entitySprite.sprite, pyray.Vector2(m.entityTransform.posX, m.entityTransform.posY), pyray.WHITE)
+        
         initcamera()
         initcursor()
         drawworld()
-        for p in logic.players:
-            pyray.draw_texture_v(p.entitySprite.sprite, pyray.Vector2(p.entityTransform.posX, p.entityTransform.posY), pyray.WHITE)
-        for m in logic.mobs:
-            pyray.draw_texture_v(m.entitySprite.sprite, pyray.Vector2(m.entityTransform.posX, m.entityTransform.posY), pyray.WHITE)
-
+        initentities()
+        
         pyray.end_mode_2d
         pyray.end_drawing()

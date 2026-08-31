@@ -5,7 +5,7 @@ class GridGenerator(WorldGenerator):
     def __init__(self, worldWidth, worldHeight, floorblock1):
         super().__init__(worldWidth, worldHeight, floorblock1)
         self.generatedWorld = []
-    def gridGenerator(self):
+    def generation(self):
         for wh in range(self.worldWidth):
             row = []
             for ww in range(self.worldHeight):
